@@ -3,11 +3,30 @@
 Marcador para competencias entre equipos. Varios dispositivos se conectan
 al mismo servidor y los puntajes se actualizan en tiempo real.
 
-## Requisitos
-
-- [Node.js](https://nodejs.org/) (v18 o superior) — incluye `npm`
-
 ## Instalación
+
+### 1. Instalar Node.js (si no lo tenés)
+
+**macOS (Homebrew):**
+```bash
+brew install node
+```
+
+**Linux (Debian/Ubuntu):**
+```bash
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt install -y nodejs
+```
+
+**Windows:** Descargá el instalador desde https://nodejs.org/
+
+Para verificar que quedó bien:
+```bash
+node -v   # debería mostrar v18 o superior
+npm -v    # debería mostrar un número de versión
+```
+
+### 2. Clonar e instalar dependencias
 
 ```bash
 git clone https://github.com/Liam0376/scoreboard.git
