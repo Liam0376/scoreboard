@@ -5,7 +5,7 @@ al mismo servidor y los puntajes se actualizan en tiempo real.
 
 ## Instalación
 
-### 1. Instalar Node.js (si no lo tenés)
+### 1. Instalar Node.js (si no lo tienes)
 
 **macOS (Homebrew):**
 ```bash
@@ -18,7 +18,7 @@ curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt install -y nodejs
 ```
 
-**Windows:** Descargá el instalador desde https://nodejs.org/
+**Windows:** Descarga el instalador desde https://nodejs.org/
 
 Para verificar que quedó bien:
 ```bash
