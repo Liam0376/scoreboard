@@ -91,7 +91,7 @@ function broadcast() {
   }
 }
 
-wss.on('connection', (ws) => {
+wss.on('connection', (ws, req) => {
   console.log(`  + Cliente conectado (${wss.clients.size} total)`)
 
   // Send current state immediately
@@ -100,6 +100,11 @@ wss.on('connection', (ws) => {
   ws.on('message', async (raw) => {
     try {
       const msg = JSON.parse(raw.toString())
+
+      if (ADMIN_ACTIONS.includes(msg.type) && !isLocal(req.socket.remoteAddress)) {
+        ws.send(JSON.stringify({ type: 'error', message: 'Acción solo permitida desde localhost.' }))
+        return
+      }
 
       switch (msg.type) {
         case 'addScore': {
@@ -150,6 +155,16 @@ wss.on('connection', (ws) => {
 
 // ─── Start ───────────────────────────────────────────────────────────
 const PORT = Number(process.env.PORT) || 3001
+
+// ─── Access control ──────────────────────────────────────────────────
+// Acciones de administración: solo desde la computadora que corre el
+// servidor (localhost). Los dispositivos de la red suman puntos con
+// addScore, pero no pueden crear/editar/borrar equipos ni reiniciar.
+const ADMIN_ACTIONS = ['addTeam', 'updateTeam', 'removeTeam', 'resetScores']
+
+function isLocal(addr: string | undefined): boolean {
+  return addr === '127.0.0.1' || addr === '::1' || addr === '::ffff:127.0.0.1'
+}
 
 await loadData()
 

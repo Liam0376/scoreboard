@@ -1,13 +1,14 @@
 import { NavLink } from 'react-router-dom'
-
-const links = [
-  { to: '/', label: 'Dashboard' },
-  { to: '/mesas', label: 'Mesas' },
-  { to: '/proyeccion', label: 'Proyección' },
-  { to: '/admin', label: 'Admin' },
-]
+import { isLocalHost } from '../isLocalHost'
 
 export function Nav() {
+  const links = [
+    { to: '/', label: 'Dashboard' },
+    { to: '/mesas', label: 'Mesas' },
+    { to: '/proyeccion', label: 'Proyección' },
+    ...(isLocalHost() ? [{ to: '/admin', label: 'Admin' }] : []),
+  ]
+
   return (
     <nav className="flex gap-2 p-4 bg-neutral-900/60 border-b border-neutral-800">
       {links.map((l) => (

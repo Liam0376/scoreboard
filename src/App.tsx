@@ -1,4 +1,5 @@
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { HashRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom'
+import { isLocalHost } from './isLocalHost'
 import { Nav } from './components/Nav'
 import { Dashboard } from './pages/Dashboard'
 import { Mesas } from './pages/Mesas'
@@ -8,6 +9,11 @@ import { Admin } from './pages/Admin'
 function Layout() {
   const location = useLocation()
   const showNav = location.pathname !== '/proyeccion'
+
+  // Admin solo se puede ver desde la computadora que corre el servidor
+  if (location.pathname === '/admin' && !isLocalHost()) {
+    return <Navigate to="/" replace />
+  }
 
   return (
     <>
