@@ -6,6 +6,8 @@ al mismo servidor y los puntajes se actualizan en tiempo real.
 ## Instalación
 
 ```bash
+git clone https://github.com/Liam0376/scoreboard.git
+cd scoreboard
 npm install
 ```
 
