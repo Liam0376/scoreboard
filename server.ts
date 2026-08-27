@@ -5,6 +5,7 @@ import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { networkInterfaces } from 'os'
 import { execSync } from 'child_process'
+import { randomUUID } from 'crypto'
 import { WebSocketServer, WebSocket } from 'ws'
 
 // ─── Paths ───────────────────────────────────────────────────────────
@@ -22,10 +23,10 @@ if (!existsSync(DIST_DIR) || !existsSync(resolve(DIST_DIR, 'index.html'))) {
 type Team = { id: string; name: string; color: string; score: number }
 
 const SEED: Team[] = [
-  { id: crypto.randomUUID(), name: 'Rojo', color: '#ef4444', score: 0 },
-  { id: crypto.randomUUID(), name: 'Azul', color: '#3b82f6', score: 0 },
-  { id: crypto.randomUUID(), name: 'Verde', color: '#22c55e', score: 0 },
-  { id: crypto.randomUUID(), name: 'Amarillo', color: '#eab308', score: 0 },
+  { id: randomUUID(), name: 'Rojo', color: '#ef4444', score: 0 },
+  { id: randomUUID(), name: 'Azul', color: '#3b82f6', score: 0 },
+  { id: randomUUID(), name: 'Verde', color: '#22c55e', score: 0 },
+  { id: randomUUID(), name: 'Amarillo', color: '#eab308', score: 0 },
 ]
 
 let teams: Team[] = SEED
@@ -114,7 +115,7 @@ wss.on('connection', (ws, req) => {
         }
         case 'addTeam': {
           teams.push({
-            id: crypto.randomUUID(),
+            id: randomUUID(),
             name: msg.name,
             color: msg.color,
             score: 0,
