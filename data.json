@@ -1,0 +1,20 @@
+[
+  {
+    "id": "06ae8a4a-0a5b-4572-97bb-6b8dd40e9e5f",
+    "name": "IRS",
+    "color": "#ef4444",
+    "score": 0
+  },
+  {
+    "id": "7d70b794-5133-43d6-b69a-f2c9cc767dc5",
+    "name": "ITC",
+    "color": "#3b82f6",
+    "score": 0
+  },
+  {
+    "id": "9d7b70ae-f667-4555-91df-5eeed13d50fe",
+    "name": "IDM",
+    "color": "#22c55e",
+    "score": 0
+  }
+]
