@@ -7,7 +7,7 @@
     "dev": "vite",
     "dev:all": "npx tsx server.ts & vite",
     "build": "tsc -b && vite build",
-    "start": "npx tsx server.ts",
+    "start": "npm run build && npx tsx server.ts",
     "server": "npx tsx server.ts",
     "lint": "oxlint",
     "preview": "vite preview"

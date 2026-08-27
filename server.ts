@@ -4,12 +4,19 @@ import { existsSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { networkInterfaces } from 'os'
+import { execSync } from 'child_process'
 import { WebSocketServer, WebSocket } from 'ws'
 
 // ─── Paths ───────────────────────────────────────────────────────────
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const DATA_FILE = resolve(__dirname, 'data.json')
 const DIST_DIR = resolve(__dirname, 'dist')
+
+// ─── Auto-build if dist/ is missing ──────────────────────────────────
+if (!existsSync(DIST_DIR) || !existsSync(resolve(DIST_DIR, 'index.html'))) {
+  console.log('  ⏳ dist/ no encontrado — construyendo...')
+  execSync('npm run build', { cwd: __dirname, stdio: 'inherit' })
+}
 
 // ─── Data ────────────────────────────────────────────────────────────
 type Team = { id: string; name: string; color: string; score: number }
