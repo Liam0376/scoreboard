@@ -3,6 +3,10 @@
 Marcador para competencias entre equipos. Varios dispositivos se conectan
 al mismo servidor y los puntajes se actualizan en tiempo real.
 
+## Requisitos
+
+- [Node.js](https://nodejs.org/) (v18 o superior) — incluye `npm`
+
 ## Instalación
 
 ```bash
